@@ -1,0 +1,5 @@
+app:
+  ingest-on-startup: false
+
+es:
+  host: http://mock:9200

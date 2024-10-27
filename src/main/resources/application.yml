@@ -1,0 +1,15 @@
+management:
+  endpoint:
+    health:
+      show-details: "ALWAYS"
+  endpoints:
+    web:
+      base-path: /
+      exposure:
+        include: health, metrics
+
+app:
+  ingest-on-startup: true
+
+es:
+  host: http://es01:9200
