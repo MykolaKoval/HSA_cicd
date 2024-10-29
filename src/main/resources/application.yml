@@ -6,10 +6,4 @@ management:
     web:
       base-path: /
       exposure:
-        include: health, metrics
-
-app:
-  ingest-on-startup: true
-
-es:
-  host: http://es01:9200
+        include: health, metrics, info
