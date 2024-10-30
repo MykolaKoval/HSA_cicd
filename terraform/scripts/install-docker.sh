@@ -8,5 +8,5 @@ sudo service docker status
 
 # Add the ec2-user to the Docker group so you can execute Docker commands without using sudo
 sudo usermod -a -G docker ec2-user
-newgrp docker
+# newgrp docker - to continue work without reconnect
 

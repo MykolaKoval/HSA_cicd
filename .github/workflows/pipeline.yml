@@ -50,7 +50,7 @@ jobs:
           name: build-reports
           path: build/reports/
 
-  push_to_registry:
+  build-docker:
     needs: test
     runs-on: ubuntu-latest
     steps:
@@ -73,6 +73,22 @@ jobs:
         with:
           context: .
           push: true
-          tags: mvkoval/hsa-cicd-app:latest
+          tags: mvkoval/hsa-cicd-app:${{ github.sha }}
+
+  deploy:
+    needs: build-docker
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy to EC2 instance
+        uses: appleboy/ssh-action@v1.1.0
+        with:
+          host: ${{ secrets.EC2_HOST }}
+          username: ${{ secrets.EC2_USERNAME }}
+          key: ${{ secrets.EC2_PRIVATE_KEY }}
+          script: |
+            docker stop webapp || true
+            docker rm webapp || true
+            docker pull mvkoval/hsa-cicd-app:${{ github.sha }}
+            docker run -d --name webapp -p 8080:80 mvkoval/hsa-cicd-app:${{ github.sha }}
 
 

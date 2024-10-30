@@ -18,6 +18,13 @@ out/
 ### VS Code ###
 .vscode/
 
+### Terraform ###
+**/.terraform/*
+*.tfstate
+*.tfstate.*
+**/*.tfvars
+terraform/.terraform.lock.hcl
+
 ##############################
 ## OS X
 ##############################
