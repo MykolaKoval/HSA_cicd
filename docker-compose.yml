@@ -2,7 +2,7 @@ version: '3.6'
 services:
 
   hsa-app:
-    image: mvkoval/hsa-cicd-app:latest
+    image: mvkoval/hsa-cicd-app:2955d893a93af311f60111055cbccc9327719274
     ports:
       - 8080:8080
     networks:

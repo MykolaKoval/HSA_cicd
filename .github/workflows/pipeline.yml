@@ -89,6 +89,6 @@ jobs:
             docker stop webapp || true
             docker rm webapp || true
             docker pull mvkoval/hsa-cicd-app:${{ github.sha }}
-            docker run -d --name webapp -p 8080:80 mvkoval/hsa-cicd-app:${{ github.sha }}
+            docker run -d --name webapp -p 8080:8080 mvkoval/hsa-cicd-app:${{ github.sha }}
 
 
